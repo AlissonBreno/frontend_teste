@@ -63,7 +63,7 @@
                 <a
                   href="#"
                   class="btn btn-primary"
-                  onclick="changeCard('list', 'cadastro')"
+                  onclick="changeCard('list', 'cadastro', 'category')"
                   >Adicionar</a
                 >
               </div>
@@ -74,6 +74,7 @@
                       <th scope="col">#</th>
                       <th scope="col">Categoria</th>
                       <th scope="col">Ícone</th>
+                      <th scope="col">Ação</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -86,7 +87,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="#" onclick="changeCard('cadastro', 'list')"
+                <a href="#" onclick="changeCard('cadastro', 'list', 'category')"
                   >Categorias</a
                 >
               </li>
@@ -170,16 +171,20 @@
                       </div>
                     </div>
                   </div>
+                  <input type="hidden" class="form-control" id="id_categoria" />
                   <div class="d-flex justify-content-between">
                     <button
-                      onclick="changeCard('cadastro', 'list')"
+                      onclick="changeCard('cadastro', 'list', 'category')"
                       type="submit"
                       class="btn btn-outline-primary btn-lg"
                     >
                       voltar
                     </button>
-                    <button class="btn btn-primary btn-lg" onclick="create()">
-                      Cadastrar
+                    <button
+                      class="btn btn-primary btn-lg"
+                      onclick="save('id_categoria')"
+                    >
+                      Salvar
                     </button>
                   </div>
                 </form>
