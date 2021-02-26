@@ -31,7 +31,7 @@ function getList() {
               </td>
               <td>
                 <a href="#" onclick="changeCard('list', 'cadastro', 'category', ${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">mode_edit</span></a>
-                <a href="#" onclick="changeCard('list', 'cadastro', 'category', ${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">delete</span></a>
+                <a href="#" onclick="deleteCategory(${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">delete</span></a>
               </td>
           </tr>`
         );
@@ -108,4 +108,16 @@ function loadData(id) {
     $("#id_categoria").val(id);
     $("#inputNome").val(elementos[1].innerHTML);
   }
+}
+
+function deleteCategory(id) {
+  $.ajax({
+    url: `http://localhost:3000/category/${id}`,
+    type: "DELETE",
+    async: true,
+    success: function (category) {
+      console.log(category);
+      changeCard("cadastro", "list", "category");
+    },
+  });
 }
