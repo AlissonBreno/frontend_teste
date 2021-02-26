@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>FitCard Teste</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand d-flex justify-content-around">
+        <h1>
+          <a class="navbar-brand mb-0 h2" href="../index.html">FITCARD</a>
+        </h1>
+        <div class="dropdown show">
+          <a
+            class="btn btn-light dropdown-toggle"
+            role="button"
+            id="dropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Navegação
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="../categorias/list.html"
+              >Categorias</a
+            >
+            <a class="dropdown-item" href="#">Estabelecimentos</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container d-flex justify-content-center mt-5">
+      <div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+              Estabelecimentos
+            </li>
+          </ol>
+        </nav>
+        <div class="card" style="width: 50rem">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <h2 class="card-title">Lista de Estabelecimentos</h2>
+              <a href="cadastro.html" class="btn btn-primary">Adicionar</a>
+            </div>
+            <div class="mt-5">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Estabelecimento</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Loja do Zé</td>
+                    <td>
+                      <p class="d-flex align-items-center">
+                        <span class="badge badge-secondary material-icons mr-2"
+                          >store_mall_directory</span
+                        >
+                        Supermercado
+                      </p>
+                    </td>
+                    <td>
+                      <div
+                        class="btn-group btn-group-toggle"
+                        data-toggle="buttons"
+                      >
+                        <label class="btn btn-light active">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                            checked
+                          />
+                          Ativo
+                        </label>
+                        <label class="btn btn-light">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option2"
+                            autocomplete="off"
+                          />
+                          Inativo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Loja do Zé</td>
+                    <td>
+                      <p class="d-flex align-items-center">
+                        <span class="badge badge-secondary material-icons mr-2"
+                          >restaurant</span
+                        >
+                        Restaurante
+                      </p>
+                    </td>
+                    <td>
+                      <div
+                        class="btn-group btn-group-toggle"
+                        data-toggle="buttons"
+                      >
+                        <label class="btn btn-light active">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                            checked
+                          />
+                          Ativo
+                        </label>
+                        <label class="btn btn-light">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option2"
+                            autocomplete="off"
+                          />
+                          Inativo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Loja do Zé</td>
+                    <td>
+                      <p class="d-flex align-items-center">
+                        <span class="badge badge-secondary material-icons mr-2"
+                          >car_repair</span
+                        >
+                        Borracharia
+                      </p>
+                    </td>
+                    <td>
+                      <div
+                        class="btn-group btn-group-toggle"
+                        data-toggle="buttons"
+                      >
+                        <label class="btn btn-light active">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                            checked
+                          />
+                          Ativo
+                        </label>
+                        <label class="btn btn-light">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option2"
+                            autocomplete="off"
+                          />
+                          Inativo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Loja do Zé</td>
+                    <td>
+                      <p class="d-flex align-items-center">
+                        <span class="badge badge-secondary material-icons mr-2"
+                          >local_gas_station</span
+                        >
+                        Posto
+                      </p>
+                    </td>
+                    <td>
+                      <div
+                        class="btn-group btn-group-toggle"
+                        data-toggle="buttons"
+                      >
+                        <label class="btn btn-light active">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                            checked
+                          />
+                          Ativo
+                        </label>
+                        <label class="btn btn-light">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option2"
+                            autocomplete="off"
+                          />
+                          Inativo
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+</html>
