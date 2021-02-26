@@ -61,7 +61,7 @@
                 <a
                   href="#"
                   class="btn btn-primary"
-                  onclick="changeCard('list', 'cadastro')"
+                  onclick="changeCard('list', 'cadastro', 'establishment')"
                   >Adicionar</a
                 >
               </div>
@@ -73,166 +73,10 @@
                       <th scope="col">Estabelecimento</th>
                       <th scope="col">Categoria</th>
                       <th scope="col">Status</th>
+                      <th scope="col">Ação</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Loja do Zé</td>
-                      <td>
-                        <p class="d-flex align-items-center">
-                          <span
-                            class="badge badge-secondary material-icons mr-2"
-                            >store_mall_directory</span
-                          >
-                          Supermercado
-                        </p>
-                      </td>
-                      <td>
-                        <div
-                          class="btn-group btn-group-toggle"
-                          data-toggle="buttons"
-                        >
-                          <label class="btn btn-light active">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option1"
-                              autocomplete="off"
-                              checked
-                            />
-                            Ativo
-                          </label>
-                          <label class="btn btn-light">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option2"
-                              autocomplete="off"
-                            />
-                            Inativo
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Loja do Zé</td>
-                      <td>
-                        <p class="d-flex align-items-center">
-                          <span
-                            class="badge badge-secondary material-icons mr-2"
-                            >restaurant</span
-                          >
-                          Restaurante
-                        </p>
-                      </td>
-                      <td>
-                        <div
-                          class="btn-group btn-group-toggle"
-                          data-toggle="buttons"
-                        >
-                          <label class="btn btn-light active">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option1"
-                              autocomplete="off"
-                              checked
-                            />
-                            Ativo
-                          </label>
-                          <label class="btn btn-light">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option2"
-                              autocomplete="off"
-                            />
-                            Inativo
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Loja do Zé</td>
-                      <td>
-                        <p class="d-flex align-items-center">
-                          <span
-                            class="badge badge-secondary material-icons mr-2"
-                            >car_repair</span
-                          >
-                          Borracharia
-                        </p>
-                      </td>
-                      <td>
-                        <div
-                          class="btn-group btn-group-toggle"
-                          data-toggle="buttons"
-                        >
-                          <label class="btn btn-light active">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option1"
-                              autocomplete="off"
-                              checked
-                            />
-                            Ativo
-                          </label>
-                          <label class="btn btn-light">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option2"
-                              autocomplete="off"
-                            />
-                            Inativo
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Loja do Zé</td>
-                      <td>
-                        <p class="d-flex align-items-center">
-                          <span
-                            class="badge badge-secondary material-icons mr-2"
-                            >local_gas_station</span
-                          >
-                          Posto
-                        </p>
-                      </td>
-                      <td>
-                        <div
-                          class="btn-group btn-group-toggle"
-                          data-toggle="buttons"
-                        >
-                          <label class="btn btn-light active">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option1"
-                              autocomplete="off"
-                              checked
-                            />
-                            Ativo
-                          </label>
-                          <label class="btn btn-light">
-                            <input
-                              type="radio"
-                              name="options"
-                              id="option2"
-                              autocomplete="off"
-                            />
-                            Inativo
-                          </label>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
@@ -242,7 +86,9 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="#" onclick="changeCard('cadastro', 'list')"
+                <a
+                  href="#"
+                  onclick="changeCard('cadastro', 'list', 'establishment')"
                   >Estabelecimentos</a
                 >
               </li>
@@ -358,7 +204,7 @@
                       href="#"
                       type="submit"
                       class="btn btn-outline-primary btn-lg"
-                      onclick="changeCard('cadastro', 'list')"
+                      onclick="changeCard('cadastro', 'list', 'establishment')"
                     >
                       voltar
                     </a>
