@@ -76,44 +76,7 @@
                       <th scope="col">Ícone</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Supermercado</td>
-                      <td>
-                        <span class="badge badge-secondary material-icons mr-2">
-                          store_mall_directory
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Restaurante</td>
-                      <td>
-                        <span class="badge badge-secondary material-icons mr-2">
-                          restaurant
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Borracharia</td>
-                      <td>
-                        <span class="badge badge-secondary material-icons mr-2">
-                          car_repair
-                        </span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">4</th>
-                      <td>Posto</td>
-                      <td>
-                        <span class="badge badge-secondary material-icons mr-2">
-                          local_gas_station
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
+                  <tbody></tbody>
                 </table>
               </div>
             </div>
@@ -138,11 +101,16 @@
                 <h2 class="card-title">Cadastro de Categorias</h2>
               </div>
               <div class="mt-5">
-                <form>
+                <form id="form">
                   <div class="form-row">
                     <div class="form-group col-md-12">
                       <label for="inputNome">Nome</label>
-                      <input type="text" class="form-control" id="inputNome" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputNome"
+                        required
+                      />
                     </div>
                   </div>
                   <div class="form-row">
@@ -158,6 +126,7 @@
                             name="options"
                             id="option1"
                             autocomplete="off"
+                            value="store_mall_directory"
                           />
                           <span class="material-icons">
                             store_mall_directory
@@ -170,10 +139,9 @@
                             name="options"
                             id="option1"
                             autocomplete="off"
+                            value="restaurant"
                           />
-                          <span class="material-icons">
-                            store_mall_directory
-                          </span>
+                          <span class="material-icons"> restaurant </span>
                         </label>
 
                         <label class="btn btn-light btn-lg">
@@ -182,10 +150,9 @@
                             name="options"
                             id="option1"
                             autocomplete="off"
+                            value="car_repair"
                           />
-                          <span class="material-icons">
-                            store_mall_directory
-                          </span>
+                          <span class="material-icons"> car_repair </span>
                         </label>
 
                         <label class="btn btn-light btn-lg">
@@ -194,57 +161,10 @@
                             name="options"
                             id="option1"
                             autocomplete="off"
+                            value="local_gas_station"
                           />
                           <span class="material-icons">
-                            store_mall_directory
-                          </span>
-                        </label>
-
-                        <label class="btn btn-light btn-lg">
-                          <input
-                            type="radio"
-                            name="options"
-                            id="option1"
-                            autocomplete="off"
-                          />
-                          <span class="material-icons">
-                            store_mall_directory
-                          </span>
-                        </label>
-
-                        <label class="btn btn-light btn-lg">
-                          <input
-                            type="radio"
-                            name="options"
-                            id="option1"
-                            autocomplete="off"
-                          />
-                          <span class="material-icons">
-                            store_mall_directory
-                          </span>
-                        </label>
-
-                        <label class="btn btn-light btn-lg">
-                          <input
-                            type="radio"
-                            name="options"
-                            id="option1"
-                            autocomplete="off"
-                          />
-                          <span class="material-icons">
-                            store_mall_directory
-                          </span>
-                        </label>
-
-                        <label class="btn btn-light btn-lg">
-                          <input
-                            type="radio"
-                            name="options"
-                            id="option1"
-                            autocomplete="off"
-                          />
-                          <span class="material-icons">
-                            store_mall_directory
+                            local_gas_station
                           </span>
                         </label>
                       </div>
@@ -258,7 +178,7 @@
                     >
                       voltar
                     </button>
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button class="btn btn-primary btn-lg" onclick="create()">
                       Cadastrar
                     </button>
                   </div>
@@ -271,6 +191,7 @@
     </div>
   </body>
 
+  <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
