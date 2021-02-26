@@ -1,5 +1,6 @@
 $(document).ready(function () {
   getList();
+  mascaras();
 });
 
 function getList() {
@@ -43,6 +44,29 @@ function getList() {
             </td>
           </tr>`
         );
+      }
+    },
+  });
+}
+
+function getListOptions() {
+  var tr = $(".table tbody tr");
+  tr.remove();
+
+  $.ajax({
+    url: "http://localhost:3000/category/list",
+    type: "GET",
+    async: true,
+    success: function (categoryList) {
+      console.log(categoryList);
+
+      var selector = $("#inputCategoria");
+      var dataLength = categoryList.length;
+      for (var i = 0; i < dataLength; i++) {
+        var id = categoryList[i].id_categoria;
+        var name = categoryList[i].categoria;
+
+        selector.append(`<option value="${id}">${name}</option>`);
       }
     },
   });
@@ -94,4 +118,77 @@ function isActive(status) {
               Inativo
             </label>
           </div>`;
+}
+
+function save(input) {
+  var id = $(`#${input}`).val();
+
+  if (id == "") {
+    createEstablishment();
+  } else {
+    console.log("uai");
+    // update(id);
+  }
+}
+
+function mascaras() {
+  $(".cnpj").mask("00.000.000/0000-00");
+  $(".telefone").mask("(00)00000-0000");
+  $(".agencia").mask("000-0");
+  $(".conta").mask("00.000-0");
+  $(".data").mask("00/00/0000");
+}
+
+function validateEmail(email) {
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailReg.test(email);
+}
+
+function createEstablishment() {
+  var razao_social = $("#inputRazao").val();
+  var nome_fantasia = $("#inputFantasia").val();
+  var cnpj = $("#inputCNPJ").val();
+  var email = $("#inputEmail").val();
+  var telefone = $("#inputTelefone").val();
+  var endereco = $("#inputEndereco").val();
+  var cidade = $("#inputCidade").val();
+  var estado = $("#inputEstado").val();
+  var agencia = $("#inputAgencia").val();
+  var conta = $("#inputConta").val();
+  var data_cadastro = $("#inputCadastro").val();
+  var categoria = $("#inputCategoria").val();
+  var status = true;
+
+  if (razao_social == "" || cnpj == "" || categoria == "") {
+    return;
+  }
+
+  var body = {
+    razao_social: razao_social,
+    nome_fantasia: nome_fantasia,
+    cnpj: cnpj,
+    email: email,
+    telefone: telefone,
+    endereco: endereco,
+    cidade: cidade,
+    estado: estado,
+    agencia: agencia,
+    conta: conta,
+    data_cadastro: data_cadastro,
+    categoria: categoria,
+    status: status,
+  };
+
+  console.log(body);
+
+  // $.ajax({
+  //   url: "http://localhost:3000/category",
+  //   type: "POST",
+  //   data: body,
+  //   async: true,
+  //   success: function (category) {
+  //     console.log(category);
+  //     changeCard("cadastro", "list", "category");
+  //   },
+  // });
 }

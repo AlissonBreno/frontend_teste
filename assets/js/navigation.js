@@ -6,6 +6,9 @@ function changeCard(fromId, toId, module, id = null) {
   if (toId.includes("list")) {
     getList();
   }
+  if (toId.includes("cadastro") && module == "establishment") {
+    getListOptions();
+  }
 
   $(`#${fromId}`).hide();
   $(`#${toId}`).show();
