@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="../assets/js/jquery-3.5.1.js"></script>
+    <script src="../assets/js/categorias.js"></script>
+    <script src="../assets/js/navigation.js"></script>
+    <title>FitCard Teste</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand d-flex justify-content-around">
+        <h1>
+          <a class="navbar-brand mb-0 h2" href="#">FITCARD</a>
+        </h1>
+        <div class="dropdown show">
+          <a
+            class="btn btn-light dropdown-toggle"
+            role="button"
+            id="dropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Navegação
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">Categorias</a>
+            <a class="dropdown-item" href="estabelecimentos.html"
+              >Estabelecimentos</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container d-flex justify-content-center mt-5">
+      <div>
+        <div id="list">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">
+                Categorias
+              </li>
+            </ol>
+          </nav>
+          <div class="card" style="width: 50rem">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h2 class="card-title">Lista de Categorias</h2>
+                <a
+                  href="#"
+                  class="btn btn-primary"
+                  onclick="changeCard('list', 'cadastro')"
+                  >Adicionar</a
+                >
+              </div>
+              <div class="mt-5">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Categoria</th>
+                      <th scope="col">Ícone</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Supermercado</td>
+                      <td>
+                        <span class="badge badge-secondary material-icons mr-2">
+                          store_mall_directory
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Restaurante</td>
+                      <td>
+                        <span class="badge badge-secondary material-icons mr-2">
+                          restaurant
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Borracharia</td>
+                      <td>
+                        <span class="badge badge-secondary material-icons mr-2">
+                          car_repair
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>Posto</td>
+                      <td>
+                        <span class="badge badge-secondary material-icons mr-2">
+                          local_gas_station
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="cadastro">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#" onclick="changeCard('cadastro', 'list')"
+                  >Categorias</a
+                >
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                cadastro
+              </li>
+            </ol>
+          </nav>
+          <div class="card" style="width: 50rem">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <h2 class="card-title">Cadastro de Categorias</h2>
+              </div>
+              <div class="mt-5">
+                <form>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="inputNome">Nome</label>
+                      <input type="text" class="form-control" id="inputNome" />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <p for="options">Ícone</p>
+                      <div
+                        class="btn-group btn-group-toggle"
+                        data-toggle="buttons"
+                      >
+                        <label class="btn btn-light btn-lg active">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+
+                        <label class="btn btn-light btn-lg">
+                          <input
+                            type="radio"
+                            name="options"
+                            id="option1"
+                            autocomplete="off"
+                          />
+                          <span class="material-icons">
+                            store_mall_directory
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <button
+                      onclick="changeCard('cadastro', 'list')"
+                      type="submit"
+                      class="btn btn-outline-primary btn-lg"
+                    >
+                      voltar
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      Cadastrar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+</html>
