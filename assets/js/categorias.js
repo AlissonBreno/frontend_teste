@@ -35,3 +35,27 @@ function getList() {
     },
   });
 }
+
+function create() {
+  var nome = $("#inputNome").val();
+  var icone = $(".active input").val();
+
+  if (nome == "") {
+    return;
+  }
+
+  var body = {
+    categoria: nome,
+    url_icon: icone,
+  };
+
+  $.ajax({
+    url: "http://localhost:3000/category",
+    type: "POST",
+    data: body,
+    async: true,
+    success: function (category) {
+      console.log(category);
+    },
+  });
+}
