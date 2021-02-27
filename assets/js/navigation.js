@@ -17,4 +17,9 @@ function changeCard(fromId, toId, module, id = null) {
     $("#inputNome").val("");
     loadData(id);
   }
+
+  if (module == "establishment") {
+    $("input").val("");
+    loadData(id);
+  }
 }

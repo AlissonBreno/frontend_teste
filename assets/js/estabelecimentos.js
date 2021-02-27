@@ -50,8 +50,8 @@ function getList() {
 }
 
 function getListOptions() {
-  var tr = $(".table tbody tr");
-  tr.remove();
+  var options = $("#inputCategoria .option");
+  options.remove();
 
   $.ajax({
     url: "http://localhost:3000/category/list",
@@ -66,7 +66,9 @@ function getListOptions() {
         var id = categoryList[i].id_categoria;
         var name = categoryList[i].categoria;
 
-        selector.append(`<option value="${id}">${name}</option>`);
+        selector.append(
+          `<option value="${id}" class="option">${name}</option>`
+        );
       }
     },
   });
@@ -137,6 +139,7 @@ function mascaras() {
   $(".agencia").mask("000-0");
   $(".conta").mask("00.000-0");
   $(".data").mask("00/00/0000");
+  $(".estado").mask("AA");
 }
 
 function validateEmail(email) {
@@ -181,14 +184,27 @@ function createEstablishment() {
 
   console.log(body);
 
-  // $.ajax({
-  //   url: "http://localhost:3000/category",
-  //   type: "POST",
-  //   data: body,
-  //   async: true,
-  //   success: function (category) {
-  //     console.log(category);
-  //     changeCard("cadastro", "list", "category");
-  //   },
-  // });
+  $.ajax({
+    url: "http://localhost:3000/establishment",
+    type: "POST",
+    data: body,
+    async: true,
+    success: function (category) {
+      console.log(category);
+      changeCard("cadastro", "list", "establishment");
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+
+function loadData(id) {
+  if (id != null) {
+    var list = document.getElementById(`row_${id}`);
+    var elementos = list.getElementsByTagName("td");
+
+    $("#id_categoria").val(id);
+    $("#inputNome").val(elementos[1].innerHTML);
+  }
 }
