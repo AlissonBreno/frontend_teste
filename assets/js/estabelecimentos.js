@@ -39,8 +39,8 @@ function getList() {
               ${isActive(status)}
             </td>
             <td>
-              <a href="#" onclick="changeCard('list', 'cadastro', 'category', ${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">mode_edit</span></a>
-              <a href="#" onclick="deleteCategory(${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">delete</span></a>
+              <a href="#" onclick="changeCard('list', 'cadastro', 'establishment', ${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">mode_edit</span></a>
+              <a href="#" onclick="deleteEstablishment(${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">delete</span></a>
             </td>
           </tr>`
         );
@@ -128,14 +128,13 @@ function save(input) {
   if (id == "") {
     createEstablishment();
   } else {
-    console.log("uai");
-    // update(id);
+    updateEstablishment(id);
   }
 }
 
 function mascaras() {
   $(".cnpj").mask("00.000.000/0000-00");
-  $(".telefone").mask("(00)00000-0000");
+  $(".telefone").mask("(00)0 0000-0000");
   $(".agencia").mask("000-0");
   $(".conta").mask("00.000-0");
   $(".data").mask("00/00/0000");
@@ -201,10 +200,95 @@ function createEstablishment() {
 
 function loadData(id) {
   if (id != null) {
-    var list = document.getElementById(`row_${id}`);
-    var elementos = list.getElementsByTagName("td");
-
-    $("#id_categoria").val(id);
-    $("#inputNome").val(elementos[1].innerHTML);
+    $.ajax({
+      url: `http://localhost:3000/establishment/${id}`,
+      type: "GET",
+      async: true,
+      success: function (establishment) {
+        console.log(establishment);
+        $("#id_estabelecimentos").val(id);
+        $("#inputRazao").val(establishment.razao_social);
+        $("#inputFantasia").val(establishment.nome_fantasia);
+        $("#inputCNPJ").val(establishment.cnpj);
+        $("#inputEmail").val(establishment.email);
+        $("#inputTelefone").val(establishment.telefone);
+        $("#inputEndereco").val(establishment.endereco);
+        $("#inputCidade").val(establishment.cidade);
+        $("#inputEstado").val(establishment.estado);
+        $("#inputAgencia").val(establishment.agencia);
+        $("#inputConta").val(establishment.conta);
+        $("#inputCadastro").val(establishment.data_cadastro);
+        $("#inputCategoria").val(establishment.categoria);
+        $("#status").val(establishment.status);
+      },
+      error: function (error) {
+        console.log(error);
+        changeCard("cadastro", "list", "establishment");
+      },
+    });
   }
+}
+
+function updateEstablishment(id) {
+  var razao_social = $("#inputRazao").val();
+  var nome_fantasia = $("#inputFantasia").val();
+  var cnpj = $("#inputCNPJ").val();
+  var email = $("#inputEmail").val();
+  var telefone = $("#inputTelefone").val();
+  var endereco = $("#inputEndereco").val();
+  var cidade = $("#inputCidade").val();
+  var estado = $("#inputEstado").val();
+  var agencia = $("#inputAgencia").val();
+  var conta = $("#inputConta").val();
+  var data_cadastro = $("#inputCadastro").val();
+  var categoria = $("#inputCategoria").val();
+  var status = $("#status").val();
+
+  if (razao_social == "" || cnpj == "" || categoria == "") {
+    return;
+  }
+
+  var body = {
+    razao_social: razao_social,
+    nome_fantasia: nome_fantasia,
+    cnpj: cnpj,
+    email: email,
+    telefone: telefone,
+    endereco: endereco,
+    cidade: cidade,
+    estado: estado,
+    agencia: agencia,
+    conta: conta,
+    data_cadastro: data_cadastro,
+    categoria: categoria,
+    status: status,
+  };
+
+  console.log(body);
+
+  $.ajax({
+    url: `http://localhost:3000/establishment/${id}`,
+    type: "PATCH",
+    data: body,
+    async: true,
+    success: function (establishment) {
+      console.log(establishment);
+      changeCard("cadastro", "list", "establishment");
+    },
+    error: function (error) {
+      console.log(error);
+    },
+  });
+}
+
+function deleteEstablishment(id) {
+  $.ajax({
+    url: `http://localhost:3000/establishment/${id}`,
+    type: "DELETE",
+    async: true,
+    success: function (establishment) {
+      console.log(establishment);
+      changeCard("cadastro", "list", "establishment");
+    },
+  });
 }
