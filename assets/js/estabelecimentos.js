@@ -24,7 +24,7 @@ function getList() {
         var status = establishmentList[i].status;
 
         table.append(
-          `<tr>
+          `<tr id="row_${id}">
             <td scope="row">${id}</td>
             <td>${name}</td>
             <td>
@@ -36,7 +36,31 @@ function getList() {
               </p>
             </td>
             <td>
-              ${isActive(status)}
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light ${isActive(
+                  status
+                )}" onclick="changeStatus(${id}, 'true')">
+                  <input
+                    type="radio"
+                    name="options"
+                    id="option1"
+                    autocomplete="off"
+                  />
+                  Ativo
+                </label>
+                <label class="btn btn-light ${isActive(
+                  !status
+                )}" onclick="changeStatus(${id}, 'false')">
+                  <input
+                    type="radio"
+                    name="options"
+                    id="option2"
+                    autocomplete="off"
+                  />
+                  Inativo
+                </label>
+                
+              </div>
             </td>
             <td>
               <a href="#" onclick="changeCard('list', 'cadastro', 'establishment', ${id})" class="btn btn-light btn-sm"><span class="material-icons" aria-hidden="true">mode_edit</span></a>
@@ -76,50 +100,9 @@ function getListOptions() {
 
 function isActive(status) {
   if (!status) {
-    return `<div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-light">
-                <input
-                  type="radio"
-                  name="options"
-                  id="option1"
-                  autocomplete="off"
-                  checked
-                />
-                Ativo
-              </label>
-              <label class="btn btn-light active">
-                <input
-                  type="radio"
-                  name="options"
-                  id="option2"
-                  autocomplete="off"
-                />
-                Inativo
-              </label>
-            </div>`;
+    return "";
   }
-
-  return `<div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-light active">
-              <input
-                type="radio"
-                name="options"
-                id="option1"
-                autocomplete="off"
-                checked
-              />
-              Ativo
-            </label>
-            <label class="btn btn-light">
-              <input
-                type="radio"
-                name="options"
-                id="option2"
-                autocomplete="off"
-              />
-              Inativo
-            </label>
-          </div>`;
+  return "active";
 }
 
 function save(input) {
@@ -289,6 +272,23 @@ function deleteEstablishment(id) {
     success: function (establishment) {
       console.log(establishment);
       changeCard("cadastro", "list", "establishment");
+    },
+  });
+}
+
+function changeStatus(id, status) {
+  var body = { status: status };
+
+  $.ajax({
+    url: `http://localhost:3000/establishment/status/${id}`,
+    type: "PATCH",
+    data: body,
+    async: true,
+    success: function (establishment) {
+      changeCard("list", "list", "establishment");
+    },
+    error: function (error) {
+      console.log(error);
     },
   });
 }
