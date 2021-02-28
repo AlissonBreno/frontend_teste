@@ -1,5 +1,6 @@
 $(document).ready(function () {
   $("#cadastro").hide();
+  $(".message_card").hide();
 });
 
 function changeCard(fromId, toId, module, id = null) {

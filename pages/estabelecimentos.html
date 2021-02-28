@@ -66,6 +66,20 @@
                 >
               </div>
               <div class="mt-5">
+                <div
+                  class="alert alert-dismissible fade show message_card"
+                  role="alert"
+                >
+                  <p class="message"></p>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                 <table class="table table-hover">
                   <thead>
                     <tr>
@@ -102,7 +116,22 @@
               <div class="d-flex justify-content-between align-items-center">
                 <h2 class="card-title">Cadastro de Estabelecimentos</h2>
               </div>
+
               <div class="mt-5">
+                <div
+                  class="alert alert-dismissible fade show message_card"
+                  role="alert"
+                >
+                  <p class="message"></p>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                 <form>
                   <div class="form-row">
                     <div class="form-group col-md-6">
@@ -137,7 +166,12 @@
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputEmail">Email</label>
-                      <input type="text" class="form-control" id="inputEmail" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputEmail"
+                        onchange="validateEmail()"
+                      />
                     </div>
                     <div class="form-group col-md-4">
                       <label for="inputTelefone">Telefone</label>
@@ -211,7 +245,12 @@
                     </div>
                     <div class="form-group col-md-3">
                       <label for="inputCategoria">Categoria</label>
-                      <select id="inputCategoria" class="form-control" required>
+                      <select
+                        id="inputCategoria"
+                        class="form-control"
+                        required
+                        onchange="isSupermarket()"
+                      >
                         <option></option>
                       </select>
                     </div>

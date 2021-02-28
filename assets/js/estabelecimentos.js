@@ -18,7 +18,7 @@ function getList() {
       var dataLength = establishmentList.length;
       for (var i = 0; i < dataLength; i++) {
         var id = establishmentList[i].id_estabelecimento;
-        var name = establishmentList[i].nome_fantasia;
+        var name = establishmentList[i].razao_social;
         var icon = establishmentList[i].categoria.url_icon;
         var nameCategory = establishmentList[i].categoria.categoria;
         var status = establishmentList[i].status;
@@ -70,6 +70,12 @@ function getList() {
         );
       }
     },
+    error: function (error) {
+      $(".message").html("falha ao carregar informações.");
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
+      changeCard("list", "list", "establishment");
+    },
   });
 }
 
@@ -95,6 +101,12 @@ function getListOptions() {
         );
       }
     },
+    error: function (error) {
+      $(".message").html("falha ao carregar informações.");
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
+      changeCard("cadastro", "list", "establishment");
+    },
   });
 }
 
@@ -106,12 +118,15 @@ function isActive(status) {
 }
 
 function save(input) {
+  var isValid = validateEmail();
+  console.log(isValid);
   var id = $(`#${input}`).val();
-
-  if (id == "") {
-    createEstablishment();
-  } else {
-    updateEstablishment(id);
+  if (isValid) {
+    if (id == "") {
+      createEstablishment();
+    } else {
+      updateEstablishment(id);
+    }
   }
 }
 
@@ -124,9 +139,20 @@ function mascaras() {
   $(".estado").mask("AA");
 }
 
-function validateEmail(email) {
-  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-  return emailReg.test(email);
+function validateEmail() {
+  var email = $("#inputEmail").val();
+  var category = $("#inputCategoria").val();
+
+  if (category == 1) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if (!emailReg.test(email) || email == "") {
+      $(".message").html("email must be valid.");
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
+      return false;
+    }
+  }
+  return true;
 }
 
 function createEstablishment() {
@@ -171,12 +197,18 @@ function createEstablishment() {
     type: "POST",
     data: body,
     async: true,
-    success: function (category) {
-      console.log(category);
+    success: function (establishment) {
+      console.log(establishment);
+      $(".message").html("item cadastrado com Sucesso!");
+      $(".message_card").addClass("alert-success");
+      $(".message_card").show();
+
       changeCard("cadastro", "list", "establishment");
     },
     error: function (error) {
-      console.log(error);
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
     },
   });
 }
@@ -205,7 +237,9 @@ function loadData(id) {
         $("#status").val(establishment.status);
       },
       error: function (error) {
-        console.log(error);
+        $(".message").html("falha ao carregar informações.");
+        $(".message_card").addClass("alert-danger");
+        $(".message_card").show();
         changeCard("cadastro", "list", "establishment");
       },
     });
@@ -255,11 +289,15 @@ function updateEstablishment(id) {
     data: body,
     async: true,
     success: function (establishment) {
-      console.log(establishment);
+      $(".message").html("Item alterado com sucesso!");
+      $(".message_card").addClass("alert-success");
+      $(".message_card").show();
       changeCard("cadastro", "list", "establishment");
     },
     error: function (error) {
-      console.log(error);
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
     },
   });
 }
@@ -271,7 +309,15 @@ function deleteEstablishment(id) {
     async: true,
     success: function (establishment) {
       console.log(establishment);
-      changeCard("cadastro", "list", "establishment");
+      $("#message").html("item excluído com Sucesso!");
+      $("#message_card").addClass("alert-danger");
+      $("#message_card").show();
+      changeCard("list", "list", "establishment");
+    },
+    error: function (error) {
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
     },
   });
 }
@@ -285,10 +331,25 @@ function changeStatus(id, status) {
     data: body,
     async: true,
     success: function (establishment) {
+      $(".message").html("Status alterado com sucesso!");
+      $(".message_card").addClass("alert-primary");
+      $(".message_card").show();
       changeCard("list", "list", "establishment");
     },
     error: function (error) {
-      console.log(error);
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
     },
   });
+}
+
+function isSupermarket() {
+  var category = $("#inputCategoria").val();
+  console.log("auai");
+  if (category == 1) {
+    $("#inputEmail").attr("required", "required");
+  } else {
+    $("#inputEmail").removeAttr("required", "required");
+  }
 }
