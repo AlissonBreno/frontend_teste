@@ -72,7 +72,6 @@ function getList() {
     },
     error: function (error) {
       $(".message").html("falha ao carregar informações.");
-      $(".message_card").addClass("alert-danger");
       $(".message_card").show();
       changeCard("list", "list", "establishment");
     },
@@ -103,7 +102,6 @@ function getListOptions() {
     },
     error: function (error) {
       $(".message").html("falha ao carregar informações.");
-      $(".message_card").addClass("alert-danger");
       $(".message_card").show();
       changeCard("cadastro", "list", "establishment");
     },
@@ -117,11 +115,31 @@ function isActive(status) {
   return "active";
 }
 
+function inputValidation() {
+  var isValideCellphone = validateCellphone();
+  var isValideEmail = validateEmail();
+  var isValidAgencia = validateAgencia();
+  var isValidConta = validateConta();
+  var isValidDataCadastro = validateData();
+
+  if (
+    isValideCellphone &&
+    isValideEmail &&
+    isValidAgencia &&
+    isValidConta &&
+    isValidDataCadastro
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 function save(input) {
-  var isValid = validateEmail();
-  console.log(isValid);
-  var id = $(`#${input}`).val();
-  if (isValid) {
+  var isInputValid = inputValidation();
+
+  if (isInputValid) {
+    var id = $(`#${input}`).val();
     if (id == "") {
       createEstablishment();
     } else {
@@ -141,17 +159,68 @@ function mascaras() {
 
 function validateEmail() {
   var email = $("#inputEmail").val();
-  var category = $("#inputCategoria").val();
-
-  if (category == 1) {
+  console.log(email);
+  if (email.length >= 1) {
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     if (!emailReg.test(email) || email == "") {
       $(".message").html("email must be valid.");
-      $(".message_card").addClass("alert-danger");
+      $(".message_card").show();
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return true;
+  }
+}
+
+function validateCellphone() {
+  var telefone = $("#inputTelefone").val();
+  var category = $("#inputCategoria").val();
+
+  if (category == 1) {
+    if (telefone.length < 15) {
+      $(".message").html("telefone must be valid.");
       $(".message_card").show();
       return false;
     }
   }
+  return true;
+}
+
+function validateAgencia() {
+  var agencia = $("#inputAgencia").val();
+
+  if (agencia.length >= 1 && agencia.length < 5) {
+    $(".message").html("agencia must be valid.");
+    $(".message_card").show();
+    return false;
+  }
+
+  return true;
+}
+
+function validateConta() {
+  var conta = $("#inputConta").val();
+
+  if (conta.length >= 1 && conta.length < 8) {
+    $(".message").html("conta must be valid.");
+    $(".message_card").show();
+    return false;
+  }
+
+  return true;
+}
+
+function validateData() {
+  var data = $("#inputCadastro").val();
+
+  if (data.length >= 1 && data.length < 8) {
+    $(".message").html("data cadastro must be valid.");
+    $(".message_card").show();
+    return false;
+  }
+
   return true;
 }
 
@@ -200,14 +269,12 @@ function createEstablishment() {
     success: function (establishment) {
       console.log(establishment);
       $(".message").html("item cadastrado com Sucesso!");
-      $(".message_card").addClass("alert-success");
       $(".message_card").show();
 
       changeCard("cadastro", "list", "establishment");
     },
     error: function (error) {
       $(".message").html(error.responseJSON.message);
-      $(".message_card").addClass("alert-danger");
       $(".message_card").show();
     },
   });
@@ -238,7 +305,6 @@ function loadData(id) {
       },
       error: function (error) {
         $(".message").html("falha ao carregar informações.");
-        $(".message_card").addClass("alert-danger");
         $(".message_card").show();
         changeCard("cadastro", "list", "establishment");
       },
@@ -290,13 +356,11 @@ function updateEstablishment(id) {
     async: true,
     success: function (establishment) {
       $(".message").html("Item alterado com sucesso!");
-      $(".message_card").addClass("alert-success");
       $(".message_card").show();
       changeCard("cadastro", "list", "establishment");
     },
     error: function (error) {
       $(".message").html(error.responseJSON.message);
-      $(".message_card").addClass("alert-danger");
       $(".message_card").show();
     },
   });
@@ -309,14 +373,12 @@ function deleteEstablishment(id) {
     async: true,
     success: function (establishment) {
       console.log(establishment);
-      $("#message").html("item excluído com Sucesso!");
-      $("#message_card").addClass("alert-danger");
-      $("#message_card").show();
+      $(".message").html("item excluído com Sucesso!");
+      $(".message_card").show();
       changeCard("list", "list", "establishment");
     },
     error: function (error) {
       $(".message").html(error.responseJSON.message);
-      $(".message_card").addClass("alert-danger");
       $(".message_card").show();
     },
   });
@@ -332,13 +394,11 @@ function changeStatus(id, status) {
     async: true,
     success: function (establishment) {
       $(".message").html("Status alterado com sucesso!");
-      $(".message_card").addClass("alert-primary");
       $(".message_card").show();
       changeCard("list", "list", "establishment");
     },
     error: function (error) {
       $(".message").html(error.responseJSON.message);
-      $(".message_card").addClass("alert-danger");
       $(".message_card").show();
     },
   });
@@ -346,10 +406,9 @@ function changeStatus(id, status) {
 
 function isSupermarket() {
   var category = $("#inputCategoria").val();
-  console.log("auai");
   if (category == 1) {
-    $("#inputEmail").attr("required", "required");
+    $("#inputTelefone").attr("required", "required");
   } else {
-    $("#inputEmail").removeAttr("required", "required");
+    $("#inputTelefone").removeAttr("required", "required");
   }
 }

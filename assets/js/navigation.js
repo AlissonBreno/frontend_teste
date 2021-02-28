@@ -7,6 +7,9 @@ function changeCard(fromId, toId, module, id = null) {
   if (toId.includes("list")) {
     getList();
   }
+  if (toId.includes("cadastro")) {
+    $(".message_card").hide();
+  }
   if (toId.includes("cadastro") && module == "establishment") {
     getListOptions();
   }

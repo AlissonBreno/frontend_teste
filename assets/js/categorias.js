@@ -37,6 +37,11 @@ function getList() {
         );
       }
     },
+    error: function (error) {
+      $(".message").html("falha ao carregar informações.");
+      $(".message_card").show();
+      changeCard("list", "list", "category");
+    },
   });
 }
 
@@ -69,8 +74,14 @@ function update(id) {
     data: body,
     async: true,
     success: function (category) {
-      console.log(category);
+      $(".message").html("item alterado com Sucesso!");
+      $(".message_card").show();
+
       changeCard("cadastro", "list", "category");
+    },
+    error: function (error) {
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").show();
     },
   });
 }
@@ -95,7 +106,13 @@ function create() {
     async: true,
     success: function (category) {
       console.log(category);
+      $(".message").html("item cadastrado com Sucesso!");
+      $(".message_card").show();
       changeCard("cadastro", "list", "category");
+    },
+    error: function (error) {
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").show();
     },
   });
 }
@@ -117,7 +134,13 @@ function deleteCategory(id) {
     async: true,
     success: function (category) {
       console.log(category);
-      changeCard("cadastro", "list", "category");
+      $(".message").html("item excluído com Sucesso!");
+      $(".message_card").show();
+      changeCard("list", "list", "category");
+    },
+    error: function (error) {
+      $(".message").html(error.responseJSON.message);
+      $(".message_card").show();
     },
   });
 }
