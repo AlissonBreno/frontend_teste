@@ -3,7 +3,7 @@ Front-end da aplicação de cadastro de estabelecimentos.
 Foram utilizadas as seguintes ferramentas de desenvolvimento:
 - HTML
 - JavaScript
-- Jaquery
+- Jquery
 
 ## Running the app
 Para rodar a aplicação basta abrir o arquivo `pages/categorias.html`.
